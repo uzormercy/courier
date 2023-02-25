@@ -49,6 +49,7 @@ const GetLayout = (path) => {
     const { pathname } = url.parse(process.env.NEXT_PUBLIC_BASE_URL + router.asPath, true)
     const config = LayoutConfig.find(({path}) => path === pathname);
     if(config) return config.layout;
+
     if(config === undefined && pathname.includes('adminaccess'))return DashboardLayout
     if(router.query) return DefaultLayout;
 }

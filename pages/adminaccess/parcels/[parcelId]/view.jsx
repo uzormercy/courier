@@ -1,18 +1,31 @@
 import CreateUpdateViewCourier from "@/components/CreateUpdateViewCourier";
-import { Fragment } from "react"
+import { Fragment, useEffect, useState } from "react"
+import { ref, onValue} from "firebase/database";
+import { database } from "@/config/firebase";
 
 export const getServerSideProps = async  ({query}) => {
-    console.log({query});
-    const courier = [];
+    const dataReference = ref(database, 'parcels/' + query.parcelId)
+    let courier;
+    onValue(dataReference, (snapshot) => {
+        courier = snapshot.val();
+      });
     return {
-        props: {courier}
+        props: {
+            courier: courier || null
+        }
     }
 }
 
 const ViewCourierPage = ({courier}) => {
+    const [isLoading, setIsLoading ] = useState(true)
+    useEffect(()=>{
+        if(courier) {
+            setIsLoading(false)
+        }
+    }, [courier])
     return (
         <Fragment>
-            <CreateUpdateViewCourier page="view" courier={courier} />
+            {!isLoading && <CreateUpdateViewCourier page="view" courier={courier} view={true} /> }
         </Fragment>
     )
 }

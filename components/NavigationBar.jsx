@@ -13,10 +13,10 @@ const NavigationBar = () => {
                         <div className=''>
                             <Nav className='me-auto'>
                                 <NavItem>
-                                    <NavLink href='/' className='text-white font-weight-light header_top_link'>123-456-7890</NavLink>
+                                    <NavLink href='tel:1234567890' className='text-white font-weight-light header_top_link'>123-456-7890</NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink href='/' className='text-white header_top_link'>support@mail.com</NavLink>
+                                    <NavLink href='mailto:support@gmail.com' className='text-white header_top_link'>support@mail.com</NavLink>
                                 </NavItem>
                                 <NavItem>
                                     <NavLink href='/' className='text-white header_top_link'>1105 Mc Donals, West London</NavLink>
@@ -34,16 +34,16 @@ const NavigationBar = () => {
                                 <NavLink href='/' className='text-black navbar-text'>Home</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href='/' className='text-black navbar-text'>About Us</NavLink>
+                                <NavLink href='/about-us' className='text-black navbar-text'>About Us</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href='/' className='text-black navbar-text'>Services</NavLink>
+                                <NavLink href='/services' className='text-black navbar-text'>Services</NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink href='/track' className='text-black navbar-text'>Cargo Tracking</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href='/' className='text-black navbar-text'>Contact us</NavLink>
+                                <NavLink href='/contact-us' className='text-black navbar-text'>Contact us</NavLink>
                             </NavItem>
                         </Nav>
                     </Collapse>

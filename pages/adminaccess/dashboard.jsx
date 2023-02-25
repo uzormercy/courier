@@ -1,27 +1,53 @@
-import { Fragment } from "react"
+import { Fragment, useEffect, useState } from "react"
 import DataTable from 'react-data-table-component';
+import { database } from "@/config/firebase";
+import { ref, get, child, remove} from "firebase/database";
 
-const ActionView = ({property}) => {
+const ActionView = ({property, handleDelete}) => {
     return (
         <div className="d-flex">
-            <a className="btn btn-sm btn-primary me-2">View</a>
-            <a className="btn btn-sm btn-success me-2">Edit</a>
-            <button className="btn btn-sm btn-danger">Delete</button>
+            <a href={`/adminaccess/parcels/${property.id}/view`} className="btn btn-sm btn-primary me-2">View</a>
+            <a  href={`/adminaccess/parcels/${property.id}/edit`} className="btn btn-sm btn-success me-2">Edit</a>
+            <button className="btn btn-sm btn-danger" onClick={()=> handleDelete(property.id)}>Delete</button>
         </div>
     )
 }
 
 
 const Dashboard = () => {
+    const [ parcels, setParcels] =  useState([])
+
+    const handleDelete = (id) => {
+        remove(ref(database, `parcels/${id}`)).then(() => {
+            getParcels();
+        })
+    }
+
+    const tableData = parcels;
+    const handleContextActions = () => {
+    }
+    const getParcels = () => {
+        const databaseReference = ref(database) 
+        get(child(databaseReference, 'parcels')).then((parcels) => {
+            if(parcels.exists){
+                const getParcelValues = Object.values(parcels.val())
+                setParcels(getParcelValues)
+                return;
+            }
+        }).catch((error) =>{
+            console.error(error)
+        })
+    }
+
     const columns = [
         {
             name: 'Sender Name',
-            selector: row => row.senderName,
+            selector: row => row.senderFullname,
             sortable: true,
         },
         {
             name: "Reciever's Name",
-            selector: row => row.recieverName,
+            selector: row => row.recipientFullname,
             sortable: true,
         },
         {
@@ -37,94 +63,31 @@ const Dashboard = () => {
         {
             name: '',
             selector: row => {
-                return <ActionView property={row} />
+                return <ActionView property={row} handleDelete={handleDelete} />
             },
         }
     ]
 
-    const tableData = [
-        {
-            id: 1,
-            senderName: 'Sender Name',
-            recieverName: "Reciever's Name",
-            trackingCode: "UJDS423JD",
-            status: "In Transition"
-        },
-        {
-            id: 2,
-            senderName: 'Sender Name',
-            recieverName: "Reciever's Name",
-            trackingCode: "UJDS423JD",
-            status: "In Transition"
-        },
-        {
-            id: 3,
-            senderName: 'Sender Name',
-            recieverName: "Reciever's Name",
-            trackingCode: "UJDS423JD",
-            status: "In Transition"
-        },
-        {
-            id: 4,
-            senderName: 'Sender Name',
-            recieverName: "Reciever's Name",
-            trackingCode: "UJDS423JD",
-            status: "In Transition"
-        },
-        {
-            id: 5,
-            senderName: 'Sender Name',
-            recieverName: "Reciever's Name",
-            trackingCode: "UJDS423JD",
-            status: "In Transition"
-        },
-        {
-            id: 6,
-            senderName: 'Sender Name',
-            recieverName: "Reciever's Name",
-            trackingCode: "UJDS423JD",
-            status: "In Transition"
-        },
-        {
-            id: 7,
-            senderName: 'Sender Name',
-            recieverName: "Reciever's Name",
-            trackingCode: "UJDS423JD",
-            status: "In Transition"
-        },
-        {
-            id: 8,
-            senderName: 'Sender Name',
-            recieverName: "Reciever's Name",
-            trackingCode: "UJDS423JD",
-            status: "In Transition"
-        },
-        {
-            id: 9,
-            senderName: 'Sender Name',
-            recieverName: "Reciever's Name",
-            trackingCode: "UJDS423JD",
-            status: "In Transition"
-        },
-        {
-            id: 10,
-            senderName: 'Sender Name',
-            recieverName: "Reciever's Name",
-            trackingCode: "UJDS423JD",
-            status: "In Transition"
-        },
-        
-    ]
-    const handleContextActions = () => {
-    }
+    useEffect(() => {
+        getParcels();
+    }, [])
     return (
         <Fragment>
+            <div className="row">
+                <div className="col-md-12">
+                    <div className="d-flex justify-content-between">
+                        <h4>All Couriers</h4>
+                        <a href={`/adminaccess/parcels/create`} className="btn btn-sm btn-primary me-2">Create Courier</a>
+                    </div>
+                </div>
+            </div>
+            
              <DataTable 
                     columns={columns}
                     data={tableData}
                     selectableRows
                     contextActions={handleContextActions}
-                    // pagination
+                    pagination
                 />
         </Fragment>
     )

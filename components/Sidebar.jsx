@@ -1,13 +1,20 @@
+import Cookies from "js-cookie"
+import Link from "next/link"
+import { useRouter } from "next/router"
+
 const { Fragment } = require("react")
 
 
 const Sidebar = () => {
+    const router =  useRouter();
     return (
         <Fragment>
              <div id="sidebar" className="main-sidebar fixed-sidebar">
                 <div className="sidebar-head">
                     <div className="sidebar-brand">
-                        <a href="/adminaccess/dashboard" className="logo-link">Courier</a>
+                        <Link href="/adminaccess/dashboard">
+                            <span className="logo-link">Courier</span>
+                        </Link>
                     </div>
                 </div>
                 <div className="sidebar-body">
@@ -19,7 +26,17 @@ const Sidebar = () => {
                                     <div className="simplebar-content-wrapper">
                                         <div className="simplebar-content">
                                             <ul className="sidebar-menu-item">
-                                                <li><a href="" className="sidebar-menu-link">Dashboard</a></li>
+                                                <li>
+                                                    <Link href="/adminaccess/dashboard">
+                                                        <span className="sidebar-menu-link" >Dashboard</span>
+                                                    </Link>
+                                                </li>
+                                                <li>
+                                                    <span className="sidebar-menu-link" onClick={() => {
+                                                        Cookies.remove('_token')
+                                                        router.reload();
+                                                    }} >Logout</span>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
