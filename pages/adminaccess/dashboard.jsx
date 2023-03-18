@@ -2,11 +2,14 @@ import { Fragment, useEffect, useState } from "react"
 import DataTable from 'react-data-table-component';
 import { database } from "@/config/firebase";
 import { ref, get, child, remove} from "firebase/database";
+import Link from "next/link";
 
 const ActionView = ({property, handleDelete}) => {
     return (
         <div className="d-flex">
-            <a href={`/adminaccess/parcels/${property.id}/view`} className="btn btn-sm btn-primary me-2">View</a>
+            <Link href={{pathname: 'parcels/[parcelId]/view', query: { parcelId: property.id }}}>
+                <span className="btn btn-sm btn-primary me-2">View</span>
+            </Link>
             <a  href={`/adminaccess/parcels/${property.id}/edit`} className="btn btn-sm btn-success me-2">Edit</a>
             <button className="btn btn-sm btn-danger" onClick={()=> handleDelete(property.id)}>Delete</button>
         </div>

@@ -3,29 +3,29 @@ import { Fragment, useEffect, useState } from "react"
 import { ref, onValue} from "firebase/database";
 import { database } from "@/config/firebase";
 
-export const getServerSideProps = async  ({query}) => {
-    const dataReference = ref(database, 'parcels/' + query.parcelId)
-    let courier;
-    onValue(dataReference, (snapshot) => {
-        courier = snapshot.val();
-      });
-    return {
-        props: {
-            courier: courier || null
-        }
-    }
-}
 
-const ViewCourierPage = ({courier}) => {
+const ViewCourierPage = () => {
     const [isLoading, setIsLoading ] = useState(true)
-    useEffect(()=>{
-        if(courier) {
+    const [courier, setCourier] = useState({});
+
+    const getParcel = (parcelId) => {
+        const dataReference = ref(database, 'parcels/' + parcelId)
+        onValue(dataReference, (snapshot) => {
+            setCourier(snapshot.val())
             setIsLoading(false)
+          });
+          return 
+    }
+    useEffect(()=>{
+        if(isLoading){
+            const url = window.location.pathname.split("/");
+            const formatUrl = url.slice(url.length - 2, -1)
+            getParcel(formatUrl[0])
         }
-    }, [courier])
+    }, [isLoading])
     return (
         <Fragment>
-            {!isLoading && <CreateUpdateViewCourier page="view" courier={courier} view={true} /> }
+            {(!isLoading && courier) && <CreateUpdateViewCourier page="view" courier={courier} view={true} /> }
         </Fragment>
     )
 }
