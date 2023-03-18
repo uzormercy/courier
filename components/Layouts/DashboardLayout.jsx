@@ -8,8 +8,8 @@ const DashboardLayout =  ({children}) => {
     return (
          <Fragment>
             <Head>
-                <title>Courier</title>
-                <meta name="description" content="Courier" />
+                <title>Xdevlogistics</title>
+                <meta name="description" content="Xdevlogistics" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>

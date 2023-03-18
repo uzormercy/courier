@@ -23,7 +23,7 @@ const Index = () => {
     }
     return <div className='login-section'>
         <Head>
-            <title>Courier - Login</title>
+            <title>Xdevlogistics - Login</title>
         </Head>
         <div className="container mx-auto">
             <div className="row">

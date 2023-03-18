@@ -8,7 +8,7 @@ const Footer = () => {
                         <div className="col-md-4 col-xs-6">
                             <div className="footer-about-us">
                                 <p>
-                                Courier Logistics is the world <br/>largest courier service provider.
+                                Xdevlogistics  is the world <br/>largest courier service provider.
                                 </p>
 
                             </div>
@@ -41,7 +41,7 @@ const Footer = () => {
                                     <a href="tel: +1-(255)-7899" className="footer-link ms-2">+1 (255) 7899</a>
                                 </p>
                                 <p className="text-whitesmoke">Email: 
-                                    <a href="mailto:contact@courier.com" className="footer-link ms-2">contact@courier.com</a>
+                                    <a href="mailto:contact@xdevlogistics.com" className="footer-link ms-2">contact@xdevlogistics.com</a>
                                 </p>
                            </div>
                         </div>
@@ -50,7 +50,7 @@ const Footer = () => {
             </div>
             <div className="footer-copy-right">
                 <div className="container">
-                    <h4>Copyright &copy; 2008 - 2023 Courier All rights reserved.</h4>
+                    <h4>Copyright &copy; 2008 - 2023 Xdevlogistics All rights reserved.</h4>
                 </div>
             </div>
         </section>

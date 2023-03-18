@@ -55,8 +55,8 @@ const ContactUs = () => {
                                         </div>
                                     </div>
                                     <div className="media-body">
-                                        <p className="mb-1">contact@courier.com </p>
-                                        <p>support@courier.com</p>
+                                        <p className="mb-1">contact@xdevlogistics.com </p>
+                                        <p>support@xdevlogistics.com</p>
                                     </div>
                                 </div>
                                 <div className="media">

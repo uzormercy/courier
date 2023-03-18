@@ -32,7 +32,7 @@ const DefaultLayout = ({ children }) => {
 
     const [isLoading, setIsLoading] = useState(true)
     const [isHomePage, setIsHomePage] =  useState(true);
-    const [pageTitle, setPageTitle] = useState("Welcome to courier");
+    const [pageTitle, setPageTitle] = useState("Welcome to Xdevlogistics");
     const router = useRouter();
 
     const handlePageTitle = () => {
@@ -54,7 +54,7 @@ const DefaultLayout = ({ children }) => {
         <Fragment>
             <Head>
                 <title>{title}</title>
-                <meta name="description" content="Courier" />
+                <meta name="description" content="Xdevlogistics" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>

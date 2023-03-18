@@ -13,7 +13,7 @@ const Sidebar = () => {
                 <div className="sidebar-head">
                     <div className="sidebar-brand">
                         <Link href="/adminaccess/dashboard">
-                            <span className="logo-link">Courier</span>
+                            <span className="logo-link">Xdevlogistics</span>
                         </Link>
                     </div>
                 </div>
