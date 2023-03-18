@@ -46,7 +46,8 @@ const DefaultLayout = ({ children }) => {
 
     useEffect(() => {
         handlePageTitle();
-    }, [router.pathname])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     const title = `Courier - ${pageTitle}`;
     return(

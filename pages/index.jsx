@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import { FaClock, FaCalendarAlt, FaNewspaper, FaGlobe } from "react-icons/fa";
 export default function Home() {
