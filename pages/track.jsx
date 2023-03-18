@@ -16,9 +16,9 @@ const TrackingPage = () => {
         const getParcel  =  await fetch(`${url}/api/parcels/${data.trackingCode}`);
         const parcel = await getParcel.json();
         if(parcel.status === 422){
-            setErrorMessage('Unable to retrieve parcel')
+            return setErrorMessage(`Unable to retrieve parcel with this tracking code ${data.trackingCode}`)
         }
-            setTracked(parcel);
+        setTracked(parcel);
     }
     return (
         <>

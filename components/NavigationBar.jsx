@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React, { useState } from 'react';
 
 import { Collapse, Navbar, NavbarBrand, NavbarToggler, Nav, NavItem, NavLink } from 'reactstrap';
@@ -26,7 +27,9 @@ const NavigationBar = () => {
                     </div>
                 </div>
                 <Navbar expand="md" container="md" className="bg-white" color="" light>
-                    <NavbarBrand href='/' className='ps-3 text-black logo-text'>Courier</NavbarBrand>
+                    <NavbarBrand href='/' className='ps-3 text-black logo-text'>
+                        <Image src="/images/logo.svg" width={80} height={80} alt="logo" />
+                    </NavbarBrand>
                     <NavbarToggler onClick={toggle} />
                     <Collapse isOpen={isOpen} navbar className='justify-content-end align-items-end'>
                         <Nav className="" navbar>

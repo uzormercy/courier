@@ -9,6 +9,6 @@ export default function App({ Component, pageProps, router }) {
     import('bootstrap/dist/js/bootstrap')
   }, [])
   return <>
-        {layout({ children:  <Component {...pageProps} />})}
+        {layout({ children:  <Component {...pageProps} /> })}
         </> 
 }

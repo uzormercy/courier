@@ -2,14 +2,16 @@ import Head from "next/head";
 import NavigationBar from "../NavigationBar";
 import Banner from "../Banner";
 import { useRouter } from "next/router";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useState, useRef } from "react";
 import Footer from "../Footer";
 
-const DefaultLayout = ({children}) => {
-    const router = useRouter();
-    const [isHomePage, setIsHomePage] =  useState(true);
-    const [pageTitle, setPageTitle] = useState("Welcome to courier");
-    const innerPages = [
+
+const DefaultLayout = ({ children }) => {
+    const innerPages = useRef([
+        {
+            name: 'Welcome to courier',
+            path: '/'
+        },
         {
             name: 'About Us',
             path: '/about-us'
@@ -26,10 +28,16 @@ const DefaultLayout = ({children}) => {
             name: 'Services',
             path: '/services'
         }
-    ]
+    ]).current
+
+    const [isLoading, setIsLoading] = useState(true)
+    const [isHomePage, setIsHomePage] =  useState(true);
+    const [pageTitle, setPageTitle] = useState("Welcome to courier");
+    const router = useRouter();
 
     const handlePageTitle = () => {
         const page = innerPages.find((page) => router.pathname === page.path)
+        setIsLoading(false)
         if(router.pathname !== '/'){
             setIsHomePage(false);
             setPageTitle(page.name);
@@ -38,7 +46,8 @@ const DefaultLayout = ({children}) => {
 
     useEffect(() => {
         handlePageTitle();
-    }, [])
+    }, [router.pathname])
+
     const title = `Courier - ${pageTitle}`;
     return(
         <Fragment>
@@ -49,7 +58,7 @@ const DefaultLayout = ({children}) => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <NavigationBar />
-                <Banner isFull={isHomePage} pageTitle={pageTitle} />
+                {!isLoading && <Banner isFull={isHomePage} pageTitle={pageTitle} /> }
                 {children}
             <Footer/>
         </Fragment>
