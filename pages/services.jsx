@@ -23,14 +23,14 @@ const ServicesPage = () => {
                                     <div className="image_list">
                                         <Image src="/images/services_thumb2.jpg" alt='services' width={400} height={300} />
                                         <h3 className="single-title pb-1 mt-2 pt-2 font-25">Warehousing and Distrubution</h3>
-                                        <p>We provide flexible warehousing and distribution solutions to help our clients streamline their supply chain. Our warehouses are equipped with state-of-the-art technology and security systems to ensure the safety and security of our clients' goods.</p>
+                                        <p>We provide flexible warehousing and distribution solutions to help our clients streamline their supply chain. Our warehouses are equipped with state-of-the-art technology and security systems to ensure the safety and security of our clients goods.</p>
                                     </div>
                                 </div>
                                 <div className="col-md-6 col-xs-6">
                                     <div className="image_list">
                                         <Image src="/images/services_thumb3.jpg" alt='services' width={400} height={300} />
                                         <h3 className="single-title pb-1 mt-2 pt-2 font-25">Customer Brokerage</h3>
-                                        <p>We offer customs brokerage services to help our clients navigate the complex customs clearance process. Our team of experienced customs brokers ensures that all necessary documentation is in order and that our clients' goods are cleared through customs without delay.</p>
+                                        <p>We offer customs brokerage services to help our clients navigate the complex customs clearance process. Our team of experienced customs brokers ensures that all necessary documentation is in order and that our clients goods are cleared through customs without delay.</p>
                                     </div>
                                 </div>
                                 <div className="col-md-6 col-xs-6">
