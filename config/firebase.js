@@ -16,7 +16,7 @@ const {
 const firebaseConfig = {
     apiKey: NEXT_PUBLIC_FIREBASE_APIKEY,
     authDomain: NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-    databaseURL: 'https://courier-deeeb-default-rtdb.firebaseio.com',//NEXT_PUBLIC_FIREBASE_DATABASE_URL,
+    databaseURL: 'https://xdevlogistics-default-rtdb.firebaseio.com',//NEXT_PUBLIC_FIREBASE_DATABASE_URL,
     projectId: NEXT_PUBLIC_PROJECT_ID,
     storageBucket: NEXT_PUBLIC_STORAGE_BUCKET,
     messagingSenderId: NEXT_PUBLIC_MESSAGING_SENDER_ID,
